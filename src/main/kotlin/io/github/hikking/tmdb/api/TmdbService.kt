@@ -47,4 +47,9 @@ abstract class TmdbService() {
      * Get keywords of a movie by ID.
      */
     abstract suspend fun getKeyWords(movieId: Int): KeyWords
+
+    /**
+     * Get the latest movie.
+     */
+    abstract suspend fun getLatestMovie(): Movie
 }

@@ -11,7 +11,7 @@ import java.time.LocalDate
 data class Movie(
     val adult: Boolean,
     @SerialName("backdrop_path")
-    val backdropPath: String,
+    val backdropPath: String?,
     @SerialName("belongs_to_collection")
     val belongsToCollection: MovieCollection?,
     val budget: Long,
@@ -19,7 +19,7 @@ data class Movie(
     val homepage: String,
     val id: Long,
     @SerialName("imdb_id")
-    val imdbId: String,
+    val imdbId: String?,
     @SerialName("original_language")
     val originalLanguage: String,
     @SerialName("original_title")
@@ -27,14 +27,14 @@ data class Movie(
     val overview: String,
     val popularity: Double,
     @SerialName("poster_path")
-    val posterPath: String,
+    val posterPath: String?,
     @SerialName("production_companies")
     val productionCompanies: List<ProductionCompany>,
     @SerialName("production_countries")
     val productionCountries: List<ProductionCountry>,
     @SerialName("release_date")
     @Serializable(with = LocalDateSerializer::class)
-    val releaseDate: LocalDate,
+    val releaseDate: LocalDate?,
     val revenue: Long,
     val runtime: Long,
     @SerialName("spoken_languages")
