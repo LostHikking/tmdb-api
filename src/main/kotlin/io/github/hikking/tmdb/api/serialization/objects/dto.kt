@@ -235,13 +235,13 @@ sealed class ImageChange {
 }
 
 @Serializable
-data class Backdrop(
+data class BackdropChange(
     override val filePath: String,
     override val language: String?,
 ): ImageChange()
 
 @Serializable
-data class Poster(
+data class PosterChange(
     override val filePath: String,
     override val language: String?,
 ): ImageChange()
