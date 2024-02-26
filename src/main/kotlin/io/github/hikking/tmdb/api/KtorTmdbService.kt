@@ -67,6 +67,15 @@ class KtorTmdbService(private val httpClient: HttpClient) : TmdbService() {
         }.body()
     }
 
+    override suspend fun getImages(movieId: Int, languages: Set<String?>?): Images {
+        return httpClient.get {
+            url {
+                appendPathSegments("movie", "$movieId", "images")
+                parameters.append("include_image_language", languages?.joinToString(","))
+            }
+        }.body()
+    }
+
     private fun StringValuesBuilder.append(name: String, value: Any?) {
         value?.let {
             append(name, value.toString())

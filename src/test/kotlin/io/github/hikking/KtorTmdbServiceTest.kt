@@ -5,7 +5,7 @@ import io.github.hikking.tmdb.api.TmdbService
 import io.kotest.assertions.throwables.shouldNotThrowAny
 import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.datatest.withData
-import io.kotest.matchers.collections.beEmpty
+import io.kotest.matchers.collections.*
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNot
 import io.ktor.client.HttpClient
@@ -107,6 +107,19 @@ class KtorTmdbServiceTest : ShouldSpec({
                 tmdbService.getExternalIds(id)
             }
             credits.id shouldBe id
+        }
+    }
+
+    context("get images for the movie by id") {
+        val languages = setOf("ru", "en")
+        withData(603 to languages, 604 to languages, 605 to languages) { (id, languages) ->
+            val images = shouldNotThrowAny {
+                tmdbService.getImages(id, languages)
+            }
+            images.id shouldBe id
+            images.logos.map { it.language } shouldContainExactly languages
+            images.posters.map { it.language } shouldContainExactly languages
+            images.backdrops.map { it.language } shouldContainExactly languages
         }
     }
 })
