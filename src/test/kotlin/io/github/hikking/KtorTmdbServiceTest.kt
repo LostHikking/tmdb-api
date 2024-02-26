@@ -131,4 +131,10 @@ class KtorTmdbServiceTest : ShouldSpec({
             keywords.id shouldBe id
         }
     }
+
+    context("get latest movie") {
+        shouldNotThrowAny {
+            tmdbService.getLatestMovie()
+        }
+    }
 })
