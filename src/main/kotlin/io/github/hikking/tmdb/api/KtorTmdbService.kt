@@ -59,6 +59,14 @@ class KtorTmdbService(private val httpClient: HttpClient) : TmdbService() {
         }.body()
     }
 
+    override suspend fun getExternalIds(movieId: Int): ExternalIds {
+        return httpClient.get {
+            url {
+                appendPathSegments("movie", "$movieId", "external_ids")
+            }
+        }.body()
+    }
+
     private fun StringValuesBuilder.append(name: String, value: Any?) {
         value?.let {
             append(name, value.toString())
