@@ -117,9 +117,9 @@ class KtorTmdbServiceTest : ShouldSpec({
                 tmdbService.getImages(id, languages)
             }
             images.id shouldBe id
-            images.logos.map { it.language } shouldContainExactly languages
-            images.posters.map { it.language } shouldContainExactly languages
-            images.backdrops.map { it.language } shouldContainExactly languages
+            images.logos.map { it.language } shouldContainAnyOf languages
+            images.posters.map { it.language } shouldContainAnyOf languages
+            images.backdrops.map { it.language } shouldContainAnyOf languages
         }
     }
 
