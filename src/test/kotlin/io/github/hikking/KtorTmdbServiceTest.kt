@@ -103,10 +103,10 @@ class KtorTmdbServiceTest : ShouldSpec({
 
     context("get external ids for the movie by id") {
         withData(603, 604, 605) { id ->
-            val credits = shouldNotThrowAny {
+            val externalIds = shouldNotThrowAny {
                 tmdbService.getExternalIds(id)
             }
-            credits.id shouldBe id
+            externalIds.id shouldBe id
         }
     }
 
