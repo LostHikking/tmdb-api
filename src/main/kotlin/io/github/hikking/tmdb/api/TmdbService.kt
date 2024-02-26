@@ -1,9 +1,6 @@
 package io.github.hikking.tmdb.api
 
-import io.github.hikking.tmdb.api.serialization.objects.AccountStates
-import io.github.hikking.tmdb.api.serialization.objects.AlternativeTitles
-import io.github.hikking.tmdb.api.serialization.objects.Changes
-import io.github.hikking.tmdb.api.serialization.objects.Movie
+import io.github.hikking.tmdb.api.serialization.objects.*
 import java.time.LocalDate
 
 abstract class TmdbService() {
@@ -30,4 +27,9 @@ abstract class TmdbService() {
      * Get the recent changes for a movie.
      */
     abstract suspend fun getChanges(movieId: Int, endDate: LocalDate? = null, page: Int? = null, startDate: LocalDate? = null): Changes
+
+    /**
+     * Get the top level details of a movie by ID.
+     */
+    abstract suspend fun getCredits(movieId: Int, language: String? = null): Credits
 }

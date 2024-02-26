@@ -92,4 +92,13 @@ class KtorTmdbServiceTest : ShouldSpec({
         }
     }
 
+    context("get credits by id") {
+        withData(603, 604, 605) { id ->
+            val credits = shouldNotThrowAny {
+                tmdbService.getCredits(id)
+            }
+            credits.id shouldBe id
+        }
+    }
+
 })

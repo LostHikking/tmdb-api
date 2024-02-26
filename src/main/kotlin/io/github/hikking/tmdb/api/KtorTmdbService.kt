@@ -1,9 +1,6 @@
 package io.github.hikking.tmdb.api
 
-import io.github.hikking.tmdb.api.serialization.objects.AccountStates
-import io.github.hikking.tmdb.api.serialization.objects.AlternativeTitles
-import io.github.hikking.tmdb.api.serialization.objects.Changes
-import io.github.hikking.tmdb.api.serialization.objects.Movie
+import io.github.hikking.tmdb.api.serialization.objects.*
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -52,6 +49,15 @@ class KtorTmdbService(private val httpClient: HttpClient) : TmdbService() {
         }.body()
     }
 
+
+    override suspend fun getCredits(movieId: Int, language: String?): Credits {
+        return httpClient.get {
+            url {
+                appendPathSegments("movie", "$movieId", "credits")
+                parameters.append("language", language)
+            }
+        }.body()
+    }
 
     private fun StringValuesBuilder.append(name: String, value: Any?) {
         value?.let {
