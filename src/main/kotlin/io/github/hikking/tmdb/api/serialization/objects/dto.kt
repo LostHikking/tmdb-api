@@ -144,7 +144,7 @@ data class SpokenLanguage(
     @SerialName("english_name")
     val englishName: String,
     @SerialName("iso_639_1")
-    val iso6391: String,
+    val language: String,
     val name: String,
 )
 
