@@ -32,4 +32,9 @@ abstract class TmdbService() {
      * Get the top level details of a movie by ID.
      */
     abstract suspend fun getCredits(movieId: Int, language: String? = null): Credits
+
+    /**
+     * Get external urls of a movie by ID.
+     */
+    abstract suspend fun getExternalIds(movieId: Int): ExternalIds
 }
