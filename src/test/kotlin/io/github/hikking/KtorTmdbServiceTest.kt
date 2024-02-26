@@ -122,4 +122,13 @@ class KtorTmdbServiceTest : ShouldSpec({
             images.backdrops.map { it.language } shouldContainExactly languages
         }
     }
+
+    context("get keywords for the movie by id") {
+        withData(603, 604, 605) { id ->
+            val keywords = shouldNotThrowAny {
+                tmdbService.getKeyWords(id)
+            }
+            keywords.id shouldBe id
+        }
+    }
 })

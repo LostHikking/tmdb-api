@@ -76,6 +76,14 @@ class KtorTmdbService(private val httpClient: HttpClient) : TmdbService() {
         }.body()
     }
 
+    override suspend fun getKeyWords(movieId: Int): KeyWords {
+        return httpClient.get {
+            url {
+                appendPathSegments("movie", "$movieId", "keywords")
+            }
+        }.body()
+    }
+
     private fun StringValuesBuilder.append(name: String, value: Any?) {
         value?.let {
             append(name, value.toString())
