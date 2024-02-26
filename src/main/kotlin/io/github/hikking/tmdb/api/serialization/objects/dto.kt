@@ -355,3 +355,15 @@ data class Poster(
     val voteCount: Long,
     val width: Long,
 )
+
+@Serializable
+data class KeyWords(
+    val id: Long,
+    val keywords: List<KeyWord>,
+)
+
+@Serializable
+data class KeyWord(
+    val id: Long,
+    val name: String,
+)

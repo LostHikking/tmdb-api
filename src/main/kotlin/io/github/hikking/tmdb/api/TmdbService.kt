@@ -42,4 +42,9 @@ abstract class TmdbService() {
      * Get the images that belong to a movie.
      */
     abstract suspend fun getImages(movieId: Int, languages: Set<String?>? = null): Images
+
+    /**
+     * Get keywords of a movie by ID.
+     */
+    abstract suspend fun getKeyWords(movieId: Int): KeyWords
 }
