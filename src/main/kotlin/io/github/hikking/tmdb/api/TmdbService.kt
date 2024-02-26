@@ -1,3 +1,5 @@
+@file:Suppress("TooManyFunctions")
+
 package io.github.hikking.tmdb.api
 
 import io.github.hikking.tmdb.api.serialization.objects.AccountStates
@@ -8,6 +10,7 @@ import io.github.hikking.tmdb.api.serialization.objects.ExternalIds
 import io.github.hikking.tmdb.api.serialization.objects.Images
 import io.github.hikking.tmdb.api.serialization.objects.KeyWords
 import io.github.hikking.tmdb.api.serialization.objects.Movie
+import io.github.hikking.tmdb.api.serialization.objects.UserLists
 import java.time.LocalDate
 
 abstract class TmdbService {
@@ -64,4 +67,11 @@ abstract class TmdbService {
      * Get the latest movie.
      */
     abstract suspend fun getLatestMovie(): Movie
+
+    /**
+     * Get the lists that a movie has been added to.
+     */
+    abstract suspend fun getUserListsThatMovieBelongs(
+        movieId: Int, page: Int, languages: Set<String?>? = null
+    ): UserLists
 }
