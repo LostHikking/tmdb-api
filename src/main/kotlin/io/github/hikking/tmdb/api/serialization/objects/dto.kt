@@ -34,7 +34,7 @@ data class Movie(
     val productionCountries: List<ProductionCountry>,
     @SerialName("release_date")
     @Serializable(with = LocalDateSerializer::class)
-    val releaseDate: LocalDate,
+    val releaseDate: LocalDate?,
     val revenue: Long,
     val runtime: Long,
     @SerialName("spoken_languages")
