@@ -7,6 +7,7 @@ plugins {
     id("io.ktor.plugin") version "2.3.8"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.9.22"
     id("org.jetbrains.kotlinx.kover") version "0.7.6"
+    id("io.gitlab.arturbosch.detekt") version "1.23.5"
 }
 
 group = "io.github.hikking"
@@ -36,4 +37,5 @@ dependencies {
 
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
+    systemProperty("TMDB_API_KEY", System.getProperty("TMDB_API_KEY"))
 }

@@ -5,7 +5,8 @@ import io.github.hikking.tmdb.api.TmdbService
 import io.kotest.assertions.throwables.shouldNotThrowAny
 import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.datatest.withData
-import io.kotest.matchers.collections.*
+import io.kotest.matchers.collections.beEmpty
+import io.kotest.matchers.collections.shouldContainAnyOf
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNot
 import io.ktor.client.HttpClient
@@ -45,7 +46,7 @@ class KtorTmdbServiceTest : ShouldSpec({
             bearer {
                 loadTokens {
                     BearerTokens(
-                        "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMGZjMzVmNWVjODdmNTJlZGViMGQ5MTc2NTVlMDU2ZiIsInN1YiI6IjVjMDJlMDA1OTI1MTQxN2U1NTA0NzYxYSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.XwnmxVHqjnXCRqAy2mxbqoBmkqhPGt2-6Mr9pkeuULw",
+                        System.getProperty("TMDB_API_KEY"),
                         ""
                     )
                 }
