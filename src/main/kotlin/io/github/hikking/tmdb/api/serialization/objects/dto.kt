@@ -144,7 +144,7 @@ data class SpokenLanguage(
     @SerialName("english_name")
     val englishName: String,
     @SerialName("iso_639_1")
-    val iso6391: String,
+    val language: String,
     val name: String,
 )
 
@@ -235,13 +235,13 @@ sealed class ImageChange {
 }
 
 @Serializable
-data class Backdrop(
+data class BackdropChange(
     override val filePath: String,
     override val language: String?,
 ): ImageChange()
 
 @Serializable
-data class Poster(
+data class PosterChange(
     override val filePath: String,
     override val language: String?,
 ): ImageChange()
@@ -298,4 +298,60 @@ data class ExternalIds(
     val instagramId: String?,
     @SerialName("twitter_id")
     val twitterId: String?,
+)
+
+@Serializable
+data class Images(
+    val id: Long,
+    val backdrops: List<Backdrop>,
+    val logos: List<Logo>,
+    val posters: List<Poster>,
+)
+
+@Serializable
+data class Backdrop(
+    @SerialName("aspect_ratio")
+    val aspectRatio: Double,
+    val height: Long,
+    @SerialName("iso_639_1")
+    val language: String?,
+    @SerialName("file_path")
+    val filePath: String,
+    @SerialName("vote_average")
+    val voteAverage: Double,
+    @SerialName("vote_count")
+    val voteCount: Long,
+    val width: Long,
+)
+
+@Serializable
+data class Logo(
+    @SerialName("aspect_ratio")
+    val aspectRatio: Double,
+    val height: Long,
+    @SerialName("iso_639_1")
+    val language: String,
+    @SerialName("file_path")
+    val filePath: String,
+    @SerialName("vote_average")
+    val voteAverage: Double,
+    @SerialName("vote_count")
+    val voteCount: Long,
+    val width: Long,
+)
+
+@Serializable
+data class Poster(
+    @SerialName("aspect_ratio")
+    val aspectRatio: Double,
+    val height: Long,
+    @SerialName("iso_639_1")
+    val language: String?,
+    @SerialName("file_path")
+    val filePath: String,
+    @SerialName("vote_average")
+    val voteAverage: Double,
+    @SerialName("vote_count")
+    val voteCount: Long,
+    val width: Long,
 )
