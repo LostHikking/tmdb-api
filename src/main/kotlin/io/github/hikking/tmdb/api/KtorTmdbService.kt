@@ -1,6 +1,13 @@
 package io.github.hikking.tmdb.api
 
-import io.github.hikking.tmdb.api.serialization.objects.*
+import io.github.hikking.tmdb.api.serialization.objects.AccountStates
+import io.github.hikking.tmdb.api.serialization.objects.AlternativeTitles
+import io.github.hikking.tmdb.api.serialization.objects.Changes
+import io.github.hikking.tmdb.api.serialization.objects.Credits
+import io.github.hikking.tmdb.api.serialization.objects.ExternalIds
+import io.github.hikking.tmdb.api.serialization.objects.Images
+import io.github.hikking.tmdb.api.serialization.objects.KeyWords
+import io.github.hikking.tmdb.api.serialization.objects.Movie
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
