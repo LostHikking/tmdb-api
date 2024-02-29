@@ -1,3 +1,5 @@
+@file:Suppress("TooManyFunctions")
+
 package io.github.hikking.tmdb.api
 
 import io.github.hikking.tmdb.api.serialization.objects.AccountStates
@@ -8,6 +10,7 @@ import io.github.hikking.tmdb.api.serialization.objects.ExternalIds
 import io.github.hikking.tmdb.api.serialization.objects.Images
 import io.github.hikking.tmdb.api.serialization.objects.KeyWords
 import io.github.hikking.tmdb.api.serialization.objects.Movie
+import io.github.hikking.tmdb.api.serialization.objects.UserLists
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
@@ -95,6 +98,16 @@ class KtorTmdbService(private val httpClient: HttpClient) : TmdbService() {
         return httpClient.get {
             url {
                 appendPathSegments("movie", "latest")
+            }
+        }.body()
+    }
+
+    override suspend fun getUserListsThatMovieBelongs(movieId: Int, page: Int, languages: Set<String?>?): UserLists {
+        return httpClient.get {
+            url {
+                appendPathSegments("movie", "$movieId", "lists")
+                parameters.append("page", page)
+                parameters.append("language", languages?.joinToString(","))
             }
         }.body()
     }

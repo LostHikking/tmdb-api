@@ -367,3 +367,33 @@ data class KeyWord(
     val id: Long,
     val name: String,
 )
+
+@Serializable
+data class UserLists(
+    val id: Long,
+    val page: Long,
+    val results: List<UserList>,
+    @SerialName("total_pages")
+    val totalPages: Long,
+    @SerialName("total_results")
+    val totalResults: Long,
+)
+
+@Serializable
+data class UserList(
+    val description: String,
+    @SerialName("favorite_count")
+    val favoriteCount: Long,
+    val id: Long,
+    @SerialName("item_count")
+    val itemCount: Long,
+    @SerialName("iso_639_1")
+    val iso6391: String,
+    @SerialName("iso_3166_1")
+    val iso31661: String,
+    @SerialName("list_type")
+    val listType: String,
+    val name: String,
+    @SerialName("poster_path")
+    val posterPath: String?,
+)

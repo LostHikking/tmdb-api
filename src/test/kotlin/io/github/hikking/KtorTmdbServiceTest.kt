@@ -138,4 +138,15 @@ class KtorTmdbServiceTest : ShouldSpec({
             tmdbService.getLatestMovie()
         }
     }
+
+    context("get user lists that movie belongs") {
+        val languages = setOf("ru", "en")
+        withData(603 to languages, 604 to languages, 605 to languages) { (id, languages) ->
+            val userLists = shouldNotThrowAny {
+                tmdbService.getUserListsThatMovieBelongs(id, 1, languages)
+            }
+            userLists.id shouldBe id
+            userLists.page shouldBe 1;
+        }
+    }
 })
